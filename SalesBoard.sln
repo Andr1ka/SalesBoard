@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{A0302897-2CBE-49AC-9D78-AF527AF0D583}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastucture", "Infrastucture", "{32186C3B-F06A-4E6A-A27A-70C9FE117498}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistanse", "Persistanse\Persistanse.csproj", "{A4120D59-DA60-41DB-89D2-39F66723B7EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{1EE06D1C-50D5-47EB-A845-3D7E7F2CD0FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{A4120D59-DA60-41DB-89D2-39F66723B7EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4120D59-DA60-41DB-89D2-39F66723B7EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4120D59-DA60-41DB-89D2-39F66723B7EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EE06D1C-50D5-47EB-A845-3D7E7F2CD0FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EE06D1C-50D5-47EB-A845-3D7E7F2CD0FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EE06D1C-50D5-47EB-A845-3D7E7F2CD0FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EE06D1C-50D5-47EB-A845-3D7E7F2CD0FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
