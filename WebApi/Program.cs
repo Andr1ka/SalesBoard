@@ -1,3 +1,7 @@
+using Persistanse;
+using Services;
+using WebApi.Endpoints;
+
 namespace WebApi
 {
     public class Program
@@ -7,8 +11,13 @@ namespace WebApi
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddAuthorization();
+            //builder.Services.AddOpenApi();
 
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<ISaleRepository, SaleRepository>();
+
+            builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<ISaleService, SaleService>();
 
             var app = builder.Build();
 
@@ -18,7 +27,8 @@ namespace WebApi
 
             app.UseAuthorization();
 
-            
+            app.MapUserEndpoints();
+            app.MapSalesEndPoints();
 
             app.Run();
         }

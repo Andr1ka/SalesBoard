@@ -7,6 +7,7 @@ namespace WebApi.Endpoints
     public static class UserEndpoints
     {
         private const string _baseRoute = "/api/users";
+
         public static void MapUserEndpoints(this IEndpointRouteBuilder builder)
         {
             builder.MapPost(_baseRoute, async (CreateUserRequest request, IUserService userService, CancellationToken cancellationToken) =>

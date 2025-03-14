@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Persistanse
 {
-    public class SalesRepository : BaseRepository<Sale>, ISaleRepository
+    public class SaleRepository : BaseRepository<Sale>, ISaleRepository
     {
-        public SalesRepository(IMongoDatabase database) : base(database, "sales")
+        public SaleRepository(IMongoDatabase database) : base(database, "sales")
         {
         }
     }
