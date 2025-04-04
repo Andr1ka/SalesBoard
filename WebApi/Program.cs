@@ -1,6 +1,9 @@
+using Microsoft.Extensions.Options;
+using MongoDB.Driver;
 using Persistanse;
 using Services;
 using WebApi.Endpoints;
+using WebApi.Options;
 
 namespace WebApi
 {
@@ -11,7 +14,17 @@ namespace WebApi
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            //builder.Services.AddOpenApi();
+            builder.Services.AddEndpointsApiExplorer();  
+            builder.Services.AddSwaggerGen();
+
+            builder.Services.Configure<DatabaseOptions>(builder.Configuration.GetSection(nameof(DatabaseOptions)));
+            builder.Services.AddScoped(typeof(IMongoDatabase), sp =>
+            {
+                var options = sp.GetService<IOptions<DatabaseOptions>>();
+                var url = MongoUrl.Create(options.Value.ConnectionString);
+                var client = new MongoClient(url);
+                return client.GetDatabase(url.DatabaseName);
+            });
 
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<ISaleRepository, SaleRepository>();

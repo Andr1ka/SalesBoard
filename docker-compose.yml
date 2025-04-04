@@ -1,0 +1,25 @@
+services:
+  webapi:
+    image: ${DOCKER_REGISTRY-}webapi
+    build:
+      context: .
+      dockerfile: WebApi/Dockerfile
+    networks: 
+    - salesboardnetwork
+  mongodb:
+   image: mongo:8.0.3
+   container_name: mongodb
+   volumes: 
+    - "E:\\Docker\\Volumes\\SalesBoard:/data/db"
+   networks:
+    - salesboardnetwork
+   ports:
+    - "29000:27017"
+   environment:
+    - MONGO_INITDB_ROOT_USERNAME=sbuser
+    - MONGO_INITDB_ROOT_PASSWORD=12345678Aa
+networks:
+  salesboardnetwork:
+   driver: bridge
+
+
