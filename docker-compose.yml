@@ -4,6 +4,8 @@ services:
     build:
       context: .
       dockerfile: WebApi/Dockerfile
+    ports:
+     - "29001:8081"
     networks: 
     - salesboardnetwork
   mongodb:
