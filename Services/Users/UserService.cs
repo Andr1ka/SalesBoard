@@ -1,29 +1,26 @@
 ﻿using Domain;
 using LanguageExt.Common;
 using Persistanse;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Services.Auth;
 
-namespace Services
+namespace Services.Users
 {
     public class UserService : IUserService
     {
+        private readonly IHashService _hashService;
         private readonly IUserRepository _userRepository;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IHashService hashService, IUserRepository userRepository)
         {
             _userRepository = userRepository;
+            _hashService  = hashService;
         }
 
         public async Task<Result<User>> CreateAsync(string firstName, string lastName, string email, string password, CancellationToken cancellationToken)
         {
 
-            ///refactor this
-            var salt = "123123";
-            var hash = password + salt;
+            var salt = _hashService.GenerateSalt();
+            var hash = _hashService.CalculateHash(password,salt);
 
 
             var user = new User()

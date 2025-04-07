@@ -2,7 +2,7 @@
 using Domain.Exceptions;
 using LanguageExt.Common;
 using Persistanse;
-namespace Services
+namespace Services.Sales
 {
     public class SaleService : ISaleService
     {
@@ -55,7 +55,7 @@ namespace Services
 
         public Task<IEnumerable<Sale>> GetAllAsync(CancellationToken cancellationToken)
         {
-           return _saleRepository.GetAllAsync(cancellationToken);
+            return _saleRepository.GetAllAsync(cancellationToken);
         }
     }
 }

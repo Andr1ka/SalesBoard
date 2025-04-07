@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore.Routing;
-using Models.Requests;
-using Services;
+﻿using Models.Requests;
+using Services.Users;
 using WebApi.Extentions;
 namespace WebApi.Endpoints
 {

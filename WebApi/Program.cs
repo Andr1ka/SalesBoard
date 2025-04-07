@@ -1,7 +1,10 @@
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using Persistanse;
-using Services;
+using Services.Auth;
+using Services.Options;
+using Services.Sales;
+using Services.Users;
 using WebApi.Endpoints;
 using WebApi.Options;
 
@@ -18,6 +21,8 @@ namespace WebApi
             builder.Services.AddSwaggerGen();
 
             builder.Services.Configure<DatabaseOptions>(builder.Configuration.GetSection(nameof(DatabaseOptions)));
+            builder.Services.Configure<AuthOptions>(builder.Configuration.GetSection(nameof(AuthOptions)));
+
             builder.Services.AddScoped(typeof(IMongoDatabase), sp =>
             {
                 var options = sp.GetService<IOptions<DatabaseOptions>>();
@@ -28,9 +33,15 @@ namespace WebApi
 
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<ISaleRepository, SaleRepository>();
+            builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<ISaleService, SaleService>();
+            builder.Services.AddScoped<IJwtService, JwtService>();
+            builder.Services.AddScoped<IHashService, HashService>();
+            builder.Services.AddScoped<IAuthService, AuthService>();
+
+            builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 
             var app = builder.Build();
 
