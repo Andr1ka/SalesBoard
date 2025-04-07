@@ -13,13 +13,15 @@ namespace WebApi.Endpoints
             {
                 var result = await saleService.GetAllAsync(cancellationToken);
                 return Results.Ok(result);
-            });
+            })
+            .RequireAuthorization();
 
             builder.MapPost(_baseRoute, async (CreateSaleRequest request, ISaleService saleService, CancellationToken cancelltaionToken) => 
             { 
                 var result = await saleService.CreateAsync(request.UserId, request.Title, request.Description, request.Price, cancelltaionToken);
                 return result.ToResponse();
-            });
+            })
+            .RequireAuthorization();
         }
     }
 }
